@@ -3,14 +3,14 @@ using Microsoft.VisualBasic;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-//using System.Data;
+// using System.Data;
 using System.Diagnostics;
 /// <summary>
 /// The SeaGrid is the grid upon which the ships are deployed.
 /// </summary>
 /// <remarks>
 /// The grid is viewable via the ISeaGrid interface as a read only
-/// grid. This can be used in conjuncture with the SeaGridAdapter to 
+/// grid. This can be used in conjuncture with the SeaGridAdapter to
 /// mask the position of the ships.
 /// </remarks>
 public class SeaGrid : ISeaGrid
@@ -19,16 +19,15 @@ public class SeaGrid : ISeaGrid
 	private const int _WIDTH = 10;
 
 	private const int _HEIGHT = 10;
-	private Tile[,] _GameTiles = new Tile[_WIDTH, _HEIGHT];
+	private Tile[,] _GameTiles;
 	private Dictionary<ShipName, Ship> _Ships;
 
 	private int _ShipsKilled = 0;
 	/// <summary>
 	/// The sea grid has changed and should be redrawn.
 	/// </summary>
-	//public event EventHandler ISeaGrid.Changed;
-
 	public event EventHandler Changed;
+
 	/// <summary>
 	/// The width of the sea grid.
 	/// </summary>
@@ -60,9 +59,9 @@ public class SeaGrid : ISeaGrid
 	/// <param name="x">x coordinate of the tile</param>
 	/// <param name="y">y coordiante of the tile</param>
 	/// <returns></returns>
-
-	public TileView Item(int x, int y) {
-		 return _GameTiles[x, y].View;
+	public TileView this[int x, int y]
+	{
+		get { return _GameTiles[x, y].View; }
 	}
 
 	/// <summary>
@@ -85,6 +84,7 @@ public class SeaGrid : ISeaGrid
 	/// </summary>
 	public SeaGrid(Dictionary<ShipName, Ship> ships)
 	{
+		_GameTiles = new Tile[Width, Height];
 		//fill array with empty Tiles
 		int i = 0;
 		for (i = 0; i <= Width - 1; i++) {

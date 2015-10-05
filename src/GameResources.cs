@@ -1,10 +1,5 @@
-
-using Microsoft.VisualBasic;
-using System;
-using System.Collections;
 using System.Collections.Generic;
 //using System.Data;
-using System.Diagnostics;
 using SwinGameSDK;
 
 public static class GameResources
@@ -66,7 +61,6 @@ public static class GameResources
 	/// </summary>
 	/// <param name="font">Name of Font</param>
 	/// <returns>The Font Loaded with this Name</returns>
-
 
 	public static Font GameFont(string font)
 	{
@@ -268,7 +262,6 @@ public static class GameResources
 
 	private static void FreeFonts()
 	{
-		//Font obj = default(Font);
 		foreach ( Font obj in _Fonts.Values) {
 			SwinGame.FreeFont(obj);
 		}
@@ -276,23 +269,20 @@ public static class GameResources
 
 	private static void FreeImages()
 	{
-		//Bitmap obj = default(Bitmap);
-		foreach (Bitmap obj in _Images.Values) {
+		foreach ( Bitmap obj in _Images.Values) {
 			SwinGame.FreeBitmap(obj);
 		}
 	}
 
 	private static void FreeSounds()
 	{
-		//SoundEffect obj = default(SoundEffect);
-		foreach (SoundEffect obj in _Sounds.Values) {
+		foreach ( SoundEffect obj in _Sounds.Values) {
 			Audio.FreeSoundEffect(obj);
 		}
 	}
 
 	private static void FreeMusic()
 	{
-		//Music obj = default(Music);
 		foreach (Music obj in _Music.Values) {
 			Audio.FreeMusic(obj);
 		}

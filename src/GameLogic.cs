@@ -1,6 +1,7 @@
-
-
+//using System.Data;
 using SwinGameSDK;
+using static GameResources;
+using static GameController;
 static class GameLogic
 {
 	public static void Main()
@@ -9,20 +10,20 @@ static class GameLogic
 		SwinGame.OpenGraphicsWindow("Battle Ships", 800, 600);
 
 		//Load Resources
-		GameResources.LoadResources();
+		LoadResources();
 
-		SwinGame.PlayMusic(GameResources.GameMusic("Background"));
-		 GameController gameController = new GameController();
+		SwinGame.PlayMusic(GameMusic("Background"));
+
 		//Game Loop
 		do {
-			GameController.HandleUserInput();
-			GameController.DrawScreen();
-		} while (!(SwinGame.WindowCloseRequested() == true | GameController.CurrentState == GameState.Quitting));
+			HandleUserInput();
+			DrawScreen();
+		} while (!(SwinGame.WindowCloseRequested() == true | CurrentState == GameState.Quitting));
 
 		SwinGame.StopMusic();
 
 		//Free Resources and Close Audio, to end the program.
-		GameResources.FreeResources();
+		FreeResources();
 	}
 }
 
