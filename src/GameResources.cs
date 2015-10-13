@@ -53,7 +53,7 @@ public static class GameResources
 
 	private static void LoadMusic()
 	{
-		NewMusic("Background", "horrordrone.mp3");
+		NewMusic("Background", "643418_Beatem-up-Level-8-bit.mp3");
 	}
 
 	/// <summary>
