@@ -56,3 +56,4 @@ D:\Users\Ben\Documents\GitHub\Battleship-Wiki\bin\Debug\Resources\SwinGame.ico
 D:\Users\Ben\Documents\GitHub\Battleship-Wiki\bin\Debug\BattleShips.exe
 D:\Users\Ben\Documents\GitHub\Battleship-Wiki\bin\Debug\SwinGame.dll
 D:\Users\Ben\Documents\GitHub\Battleship-Wiki\obj\x86\Debug-Windows\BattleShips.exe
+C:\Users\Ben\Documents\GitHub\Battleship-Wiki\obj\x86\Debug-Windows\BattleShips.exe
