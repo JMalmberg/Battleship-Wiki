@@ -53,7 +53,10 @@ public static class GameResources
 
 	private static void LoadMusic()
 	{
-		NewMusic("Background", "horrordrone.mp3");
+    ///audio file taken from 
+    ///http://www.newgrounds.com/audio/listen/643418 
+    /// author wyver9
+        NewMusic("Background", "643418_Beatem-up-Level-8-bit.mp3");
 	}
 
 	/// <summary>
