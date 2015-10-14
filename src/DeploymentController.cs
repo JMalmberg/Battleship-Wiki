@@ -32,7 +32,9 @@ static class DeploymentController
 	private const int LEFT_RIGHT_BUTTON_LEFT = 350;
 	private const int RANDOM_BUTTON_LEFT = 547;
 
-	private const int RANDOM_BUTTON_WIDTH = 51;
+    private const int BACK_BUTTON_LEFT = 600;
+
+    private const int RANDOM_BUTTON_WIDTH = 51;
 
 	private const int DIR_BUTTONS_WIDTH = 47;
 
@@ -163,7 +165,7 @@ static class DeploymentController
 		}
 
 		SwinGame.DrawBitmap(GameImage("RandomButton"), RANDOM_BUTTON_LEFT, TOP_BUTTONS_TOP);
-        SwinGame.DrawBitmap(GameImage("BackButton"), RANDOM_BUTTON_LEFT, TOP_BUTTONS_TOP);
+        SwinGame.DrawBitmap(GameImage("BackButton"), BACK_BUTTON_LEFT, TOP_BUTTONS_TOP);
         DrawMessage();
 	}
 
