@@ -163,8 +163,8 @@ static class DeploymentController
 		}
 
 		SwinGame.DrawBitmap(GameImage("RandomButton"), RANDOM_BUTTON_LEFT, TOP_BUTTONS_TOP);
-
-		DrawMessage();
+        SwinGame.DrawBitmap(GameImage("BackButton"), RANDOM_BUTTON_LEFT, TOP_BUTTONS_TOP);
+        DrawMessage();
 	}
 
 	/// <summary>
