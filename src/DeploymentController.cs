@@ -32,7 +32,9 @@ static class DeploymentController
 	private const int LEFT_RIGHT_BUTTON_LEFT = 350;
 	private const int RANDOM_BUTTON_LEFT = 547;
 
-	private const int RANDOM_BUTTON_WIDTH = 51;
+    private const int BACK_BUTTON_LEFT = 600;
+
+    private const int RANDOM_BUTTON_WIDTH = 51;
 
 	private const int DIR_BUTTONS_WIDTH = 47;
 
@@ -40,52 +42,76 @@ static class DeploymentController
 	private static Direction _currentDirection = Direction.UpDown;
 
 	private static ShipName _selectedShip = ShipName.Tug;
-	/// <summary>
-	/// Handles user input for the Deployment phase of the game.
-	/// </summary>
-	/// <remarks>
-	/// Involves selecting the ships, deloying ships, changing the direction
-	/// of the ships to add, randomising deployment, end then ending
-	/// deployment
-	/// </remarks>
-	public static void HandleDeploymentInput()
-	{
-		if (SwinGame.KeyTyped(KeyCode.vk_ESCAPE)) {
-			AddNewState(GameState.ViewingGameMenu);
-		}
+    /// <summary>
+    /// Handles user input for the Deployment phase of the game.
+    /// </summary>
+    /// <remarks>
+    /// Involves selecting the ships, deloying ships, changing the direction
+    /// of the ships to add, randomising deployment, end then ending
+    /// deployment
+    /// </remarks>
+    public static void HandleDeploymentInput()
+    {
+        if (SwinGame.KeyTyped(KeyCode.vk_ESCAPE))
+        {
+            AddNewState(GameState.ViewingGameMenu);
+        }
 
-		if (SwinGame.KeyTyped(KeyCode.vk_UP) | SwinGame.KeyTyped(KeyCode.vk_DOWN)) {
-			_currentDirection = Direction.UpDown;
-		}
-		if (SwinGame.KeyTyped(KeyCode.vk_LEFT) | SwinGame.KeyTyped(KeyCode.vk_RIGHT)) {
-			_currentDirection = Direction.LeftRight;
-		}
+        if (SwinGame.KeyTyped(KeyCode.vk_UP) | SwinGame.KeyTyped(KeyCode.vk_DOWN))
+        {
+            _currentDirection = Direction.UpDown;
+        }
+        if (SwinGame.KeyTyped(KeyCode.vk_LEFT) | SwinGame.KeyTyped(KeyCode.vk_RIGHT))
+        {
+            _currentDirection = Direction.LeftRight;
+        }
 
-		if (SwinGame.KeyTyped(KeyCode.vk_r)) {
-			HumanPlayer.RandomizeDeployment();
-		}
+        if (SwinGame.KeyTyped(KeyCode.vk_r))
+        {
+            HumanPlayer.RandomizeDeployment();
+        }
 
-		if (SwinGame.MouseClicked(MouseButton.LeftButton)) {
-			ShipName selected = default(ShipName);
-			selected = GetShipMouseIsOver();
-			if (selected != ShipName.None) {
-				_selectedShip = selected;
-			} else {
-				DoDeployClick();
-			}
+        if (SwinGame.MouseClicked(MouseButton.LeftButton))
+        {
+            ShipName selected = default(ShipName);
+            selected = GetShipMouseIsOver();
+            if (selected != ShipName.None)
+            {
+                _selectedShip = selected;
+            }
+            else
+            {
+                DoDeployClick();
+            }
 
-			if (HumanPlayer.ReadyToDeploy & IsMouseInRectangle(PLAY_BUTTON_LEFT, TOP_BUTTONS_TOP, PLAY_BUTTON_WIDTH, TOP_BUTTONS_HEIGHT)) {
-				EndDeployment();
-			} else if (IsMouseInRectangle(UP_DOWN_BUTTON_LEFT, TOP_BUTTONS_TOP, DIR_BUTTONS_WIDTH, TOP_BUTTONS_HEIGHT)) {
-				_currentDirection = Direction.LeftRight;
-			} else if (IsMouseInRectangle(LEFT_RIGHT_BUTTON_LEFT, TOP_BUTTONS_TOP, DIR_BUTTONS_WIDTH, TOP_BUTTONS_HEIGHT)) {
-				_currentDirection = Direction.LeftRight;
-			} else if (IsMouseInRectangle(RANDOM_BUTTON_LEFT, TOP_BUTTONS_TOP, RANDOM_BUTTON_WIDTH, TOP_BUTTONS_HEIGHT)) {
-				HumanPlayer.RandomizeDeployment();
-			}
-		}
-	}
+            if (HumanPlayer.ReadyToDeploy & IsMouseInRectangle(PLAY_BUTTON_LEFT, TOP_BUTTONS_TOP, PLAY_BUTTON_WIDTH, TOP_BUTTONS_HEIGHT))
+            {
+                EndDeployment();
+            }
+            else if (IsMouseInRectangle(UP_DOWN_BUTTON_LEFT, TOP_BUTTONS_TOP, DIR_BUTTONS_WIDTH, TOP_BUTTONS_HEIGHT))
+            {
+                _currentDirection = Direction.LeftRight;
+            }
+            else if (IsMouseInRectangle(LEFT_RIGHT_BUTTON_LEFT, TOP_BUTTONS_TOP, DIR_BUTTONS_WIDTH, TOP_BUTTONS_HEIGHT))
+            {
+                _currentDirection = Direction.LeftRight;
+            }
+            else if (IsMouseInRectangle(RANDOM_BUTTON_LEFT, TOP_BUTTONS_TOP, RANDOM_BUTTON_WIDTH, TOP_BUTTONS_HEIGHT))
+            {
+                HumanPlayer.RandomizeDeployment();
+            }
+            ///added code to detect click over the back button 
+            else if (IsMouseInRectangle(BACK_BUTTON_LEFT, TOP_BUTTONS_TOP, RANDOM_BUTTON_WIDTH, TOP_BUTTONS_HEIGHT))
+            {
+                ///code to return to main menu to go here
+                /// probably needs to change the state to main menu state???
+                /// need to figure out how to do this
+                /// nop();
 
+
+            }
+        }
+    }
 	/// <summary>
 	/// The user has clicked somewhere on the screen, check if its is a deployment and deploy
 	/// the current ship if that is the case.
@@ -163,8 +189,8 @@ static class DeploymentController
 		}
 
 		SwinGame.DrawBitmap(GameImage("RandomButton"), RANDOM_BUTTON_LEFT, TOP_BUTTONS_TOP);
-
-		DrawMessage();
+        SwinGame.DrawBitmap(GameImage("BackButton"), BACK_BUTTON_LEFT, TOP_BUTTONS_TOP);
+        DrawMessage();
 	}
 
 	/// <summary>
