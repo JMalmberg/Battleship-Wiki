@@ -164,7 +164,7 @@ public static class GameController
 		if (isHuman) {
 			Message = "You " + result.ToString();
 		} else {
-			Message = "The AI " + result.ToString();
+			Message = "The AI " + result.ToString().Replace("the enemy's","your");
 		}
 
 		switch (result.Value) {
