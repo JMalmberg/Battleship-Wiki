@@ -16,7 +16,8 @@ public static class GameResources
 	private static void LoadImages()
 	{
 		//Backgrounds
-		NewImage("Menu", "main_page.jpg");
+		///image for main menu was taken from http://i.ytimg.com/vi/4ub1DhRs3TI/maxresdefault.jpg
+		NewImage("Menu", "battleship.jpg");
 		NewImage("Discovery", "discover.jpg");
 		NewImage("Deploy", "deploy.jpg");
 
